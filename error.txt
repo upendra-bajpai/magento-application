@@ -1,0 +1,25 @@
+
+Running Gradle task 'assembleRelease'...
+lib/bloc/show_more_bloc.dart:49:95: Error: Unexpected token 'return'.
+
+      _listProducts=productBloc.doGetProductsList(root, id, depth, pageNumber).then((value) =>return value);
+
+                                                                                          ^^^^^^
+
+lib/bloc/show_more_bloc.dart:49:80: Error: A value of type 'Future<List<Product>>' can't be assigned to a variable of type 'List<Product>'.
+
+ - 'Future' is from 'dart:async'.
+
+ - 'List' is from 'dart:core'.
+
+ - 'Product' is from 'package:magento_mobile/models/Product.dart' ('lib/models/Product.dart').
+
+      _listProducts=productBloc.doGetProductsList(root, id, depth, pageNumber).then((value) =>return value);
+
+                                                                               ^
+
+
+
+
+
+FAILURE: Build failed with an exception.
