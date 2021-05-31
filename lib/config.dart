@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-const APP_NAME="Magento Mobile";
-const BASE_URL_LINK="http://vdsai.com/ecom";
-const ADMIN_TOKEN="Bearer 3f9tp4kppfyjvg9c6qsk6amyd7ymoxkd";
+const APP_NAME=Your App Name;
+const BASE_URL_LINK=BASE Url;
+const ADMIN_TOKEN=Toekn;
 
 //color pallet
 const PRIMARY_COLOR=Colors.black;
