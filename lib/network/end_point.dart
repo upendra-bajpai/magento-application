@@ -1,5 +1,7 @@
 //TODO: base url here
-  const String  BASE_URL=YOUR BASE URL;
+  import 'package:magento_mobile/config.dart';
+
+  const String  BASE_URL=BASE_URL_LINK;
   const String  BASE_URL_IMG=BASE_URL;
   const LOGIN_END="/rest/default/V1/integration/customer/token";
   const SIGNUP_END="/rest/default/V1/customers";

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-const APP_NAME=Your App Name;
-const BASE_URL_LINK=BASE Url;
-const ADMIN_TOKEN=Toekn;
+const APP_NAME="Your App Name";
+const BASE_URL_LINK="BASE Url";
+const ADMIN_TOKEN="Toekn";
 
 //color pallet
 const PRIMARY_COLOR=Colors.black;

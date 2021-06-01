@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:magento_mobile/config.dart';
 import 'package:magento_mobile/size_config.dart';
 
 //TODO: add admin token here
-const AppName="Magento Mobile";
-const TOKEN=ADMIN TOKEN;
+const AppName=APP_NAME;
+const TOKEN=ADMIN_TOKEN;
 const MEDIA_BASE="/pub/media/catalog/product";
 const PRODUCT_LINK='/rest/all/V1/';
 
