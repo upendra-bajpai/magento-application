@@ -27,9 +27,14 @@ jobs:
           KEY_JKS: ${{ secrets.KEY_JKS }}
           KEY_PASSWORD: ${{ secrets.ALIAS_PASSWORD }}
           ALIAS_PASSWORD: ${{ secrets.KEY_PASSWORD }}
-          run: echo $KEY_JKS > key.jks && flutter pub get && flutter test && flutter build apk --release
-      - uses: actions/upload-artifact@v1
+          run: echo $KEY_JKS > key.jks && flutter pub get && flutter test &&  flutter build apk --split-per-abi
+      - name: Create a Release APK
+        uses: ncipollo/release-action@v1
         with:
-          name: release-apk
-          path: build/app/outputs/flutter-apk/app-release.apk
+          artifacts: "build/app/outputs/apk/release/*.apk"
+          token: ${{ secrets.OSS_TOKEN }}
+      # - uses: actions/upload-artifact@v1
+      #   with:
+      #     name: release-apk
+      #     path: build/app/outputs/flutter-apk/app-release.apk
       # - run: flutter build ios --release --no-codesign
