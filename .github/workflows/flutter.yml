@@ -27,11 +27,12 @@ jobs:
           KEY_JKS: ${{ secrets.KEY_JKS }}
           KEY_PASSWORD: ${{ secrets.ALIAS_PASSWORD }}
           ALIAS_PASSWORD: ${{ secrets.KEY_PASSWORD }}
-          run: echo $KEY_JKS > key.jks && flutter pub get && flutter test &&  flutter build apk --split-per-abi
+          run: echo $KEY_JKS > key.jks && flutter pub get && flutter test
+          run: flutter build apk --split-per-abi --verbose
       - name: Create a Release APK
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "build/app/outputs/flutter-apk/*.apk"
+          artifacts: "build/app/outputs/apk/release/*.apk"
           token: ${{ secrets.OSS_TOKEN }}
           commit: oss
           tag: v1.0.${{ github.run_number }}
