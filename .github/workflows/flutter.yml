@@ -39,4 +39,4 @@ jobs:
       #   with:
       #     name: release-apk
       #     path: build/app/outputs/flutter-apk/app-release.apk
-      # - run: flutter build ios --release --no-codesign
+      - run: flutter build ios --release --no-codesign
