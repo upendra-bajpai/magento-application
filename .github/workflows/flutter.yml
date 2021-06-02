@@ -30,9 +30,9 @@ jobs:
           run: echo $KEY_JKS > key.jks && flutter pub get && flutter test &&  flutter build apk --split-per-abi
           name: Create Release
           uses: ncipollo/release-action@v1.8.6
-              with:
-                artifacts: "build/app/outputs/apk/release/*.apk"
-                token: ${{ secrets.OSS_TOKEN }}
-                commit: oss
-                tag: v1.0.${{ github.run_number }}
+          with:
+            artifacts: "build/app/outputs/apk/release/*.apk"
+            token: ${{ secrets.OSS_TOKEN }}
+            commit: oss
+            tag: v1.0.${{ github.run_number }}
       #- run: flutter build ios --release --no-codesign
