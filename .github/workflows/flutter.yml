@@ -27,7 +27,7 @@ jobs:
           KEY_JKS: ${{ secrets.KEY_JKS }}
           KEY_PASSWORD: ${{ secrets.ALIAS_PASSWORD }}
           ALIAS_PASSWORD: ${{ secrets.KEY_PASSWORD }}
-          run: echo $KEY_JKS > key.jks && flutter pub get && flutter test &&  flutter build apk --split-per-abi
+          run: echo $KEY_JKS > android/key.jks && flutter pub get && flutter test &&  flutter build apk --split-per-abi
       - name: Create Release
         uses: ncipollo/release-action@v1.8.6
         with:
