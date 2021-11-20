@@ -2,7 +2,7 @@
   <br>
   <a href="https://github.com/upendra-bajpai/magento-mobile-oss/wiki/"><img src="https://github.com/upendra-bajpai/magento-mobile-oss/blob/master/android/app/src/main/res/mipmap-hdpi/ic_launcher.png" alt="Magento Flutter logo" width="250"></a>
   <br>
-  Flutter mobile app for Magento 2
+  Open source Flutter mobile app for Magento 2
   <br>
 </h1>
 
@@ -11,25 +11,6 @@
 [![Open Issues](https://img.shields.io/github/issues/upendra-bajpai/magento-mobile-oss)](https://github.com/upendra-bajpai/magento-mobile-oss/issues)
 [![License](https://img.shields.io/badge/license-MIT-yellowgreen)](LICENSE)
 
-
-<div align="center">
-  <a align="center" href="https://github.com/upendra-bajpai?tab=followers">
-    <img src="https://img.shields.io/github/followers/upendra-bajpai?label=Follow%20%40upendra&style=social" />
-  </a>
-  <br/>
-  <a align="center" href="https://www.instagram.com/bajpaiupendra/">
-    <img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" />
-  </a>
-  <br/>
-  <a align="center" href="https://stackoverflow.com/users/6678140/upendra">
-    <img src="https://img.shields.io/badge/Stack_Overflow-FE7A16?style=for-the-badge&logo=stack-overflow&logoColor=white" />
-  </a>
-  <br/>
-<a align="center" href="https://www.linkedin.com/in/upendrabajpai">
-    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" />
-  </a>
-</div>
-<br/>
 
 Magento Mobile Oss is a fully functional eCommerce App for your Magento 2 website. It uses [Magento 2 REST API](https://devdocs.magento.com/guides/v2.3/get-started/rest_front.html), to dispaly catalog, products, add products to cart, place an order and much more.
 
@@ -40,7 +21,7 @@ If you like it please consider giving it a star.
 
 ## 📲 Setup
 
-Follow the [Documentation](https://docs.flutter.dev/get-started/install) to install flutter.Ffork and clone project on your machine to setup project locally and run the project.
+Follow the [Documentation](https://docs.flutter.dev/get-started/install) to install flutter. Fork and clone project on your machine to setup project locally and run the project.
 
 ## 🎨  Editing
 
@@ -49,7 +30,6 @@ Modify Base url and token in config.dart file.
 ## 🎬 Demo
 
 ![Demo](https://github.com/upendra-bajpai/magento-mobile-oss/blob/oss/ui.jpeg)
-img[alt=Demo] { width: 200px; }
 
 ## 🛣 Roadmap
 
@@ -60,6 +40,25 @@ You can check the GitHub [Project](https://github.com/upendra-bajpai/magento-mob
  [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
 
 ## 📪 You can dm me on instagram or linkedin
+
+<div left
+  <a href="https://github.com/upendra-bajpai?tab=followers">
+    <img src="https://img.shields.io/github/followers/upendra-bajpai?label=Follow%20%40upendra&style=social" />
+  </a>
+  <br/>
+  <a  href="https://www.instagram.com/bajpaiupendra/">
+    <img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" />
+  </a>
+  <br/>
+  <a  href="https://stackoverflow.com/users/6678140/upendra">
+    <img src="https://img.shields.io/badge/Stack_Overflow-FE7A16?style=for-the-badge&logo=stack-overflow&logoColor=white" />
+  </a>
+  <br/>
+<a  href="https://www.linkedin.com/in/upendrabajpai">
+    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" />
+  </a>
+</div>
+<br/>
 
 <!--I open to any discussion. I have [Slack](https://join.slack.com/t/magento-react-native/shared_invite/enQtNjE3ODY0MDUxOTQyLTgwNDY2YzczNTEyNjQyY2QzMmY5ZDY4MmZlYjMyYmRiYzgzZjBiMDhmOTYxMDZkZjAwODkwZGI2MjAxY2FkNTE) workspace so ping me via email if you want to join. 
 
@@ -77,4 +76,4 @@ They are offering an open-source plan for this project.-->
 
 ## 🛡 License
 
-[MIT License](LICENSE) Copyright (c) 2017-2019 [Dmytro Portenko](https://www.linkedin.com/in/upendrabajpai/).
+[MIT License](LICENSE) Copyright (c) 2020-2021 [Upendra Bajpai](https://www.linkedin.com/in/upendrabajpai/).
