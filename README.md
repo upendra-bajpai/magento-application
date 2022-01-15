@@ -29,8 +29,7 @@ Modify Base url and token in config.dart file.
 
 ## 🎬 Demo
 
-<img src="0.gif" height="300em" /> <img src="1.png" height="300em" /> <img src="2.png" height="300em" /> <img src="3.png" height="300em" />
-![Demo](https://github.com/upendra-bajpai/magento-mobile-oss/blob/oss/ui.jpeg)
+<img src="0.gif" height="300em" /> <img src="2.png" height="300em" /> <img src="3.png" height="300em" />
 
 ## 🛣 Roadmap
 
