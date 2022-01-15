@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="https://github.com/upendra-bajpai/magento-mobile-oss/wiki/"><img src="https://github.com/upendra-bajpai/magento-mobile-oss/blob/master/android/app/src/main/res/mipmap-hdpi/ic_launcher.png" alt="Magento Flutter logo" width="250"></a>
+  <a href="https://github.com/upendra-bajpai/magento-mobile-oss/wiki/"><img src="ic_launcher.png" alt="Magento Flutter logo" width="250"></a>
   <br>
   Open source Flutter mobile app for Magento 2
   <br>
@@ -25,12 +25,14 @@ Follow the [Documentation](https://docs.flutter.dev/get-started/install) to inst
 
 ## 🎨  Editing
 
-Modify Base url and token in config.dart file.
+Modify <b>Base url, App Name, Api Token</b> in config.dart file.
 
 ## 🎬 Demo
 
 <img src="0.gif" height="300em" /> <img src="2.png" height="300em" /> <img src="3.png" height="300em" />
 
+## 📲 Demo Apk
+[Release](https://github.com/upendra-bajpai/magento-mobile-oss/tree/oss/build/app/outputs/flutter-apk)
 ## 🛣 Roadmap
 
 You can check the GitHub [Project](https://github.com/upendra-bajpai/magento-mobile-oss/projects/1) or [Issues](https://github.com/upendra-bajpai/magento-mobile-oss/issues) to get an overview of new features, fixes or releases planed. 
@@ -66,7 +68,7 @@ troublesohard@gmail.com-->
 
 <!--[upwork](https://www.upwork.com/o/profiles/users/_~019a1afcd3f56e9469/)-->
 
-[linkedin](https://www.linkedin.com/in/upendrabajpai/)
+<!-- [linkedin](https://www.linkedin.com/in/upendrabajpai/) -->
 
 <!--## 🎉 Thanks to
 
