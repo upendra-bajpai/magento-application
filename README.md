@@ -43,7 +43,7 @@ You can check the GitHub [Project](https://github.com/upendra-bajpai/magento-mob
 
 ## 📪 You can dm me on instagram or linkedin
 
-<div left
+<div
   <a href="https://github.com/upendra-bajpai?tab=followers">
     <img src="https://img.shields.io/github/followers/upendra-bajpai?label=Follow%20%40upendra&style=social" />
   </a>
@@ -62,6 +62,7 @@ You can check the GitHub [Project](https://github.com/upendra-bajpai/magento-mob
 </div>
 <br/>
 
+## Have any App idea and want to convert it into reality then DM on my LinkedIn. I'll be happy to work with you.
 <!--I open to any discussion. I have [Slack](https://join.slack.com/t/magento-react-native/shared_invite/enQtNjE3ODY0MDUxOTQyLTgwNDY2YzczNTEyNjQyY2QzMmY5ZDY4MmZlYjMyYmRiYzgzZjBiMDhmOTYxMDZkZjAwODkwZGI2MjAxY2FkNTE) workspace so ping me via email if you want to join. 
 
 troublesohard@gmail.com-->
