@@ -77,6 +77,8 @@ troublesohard@gmail.com-->
 
 They are offering an open-source plan for this project.-->
 
+Design work credits @abuanwar072
+
 ## 🛡 License
 
 [MIT License](LICENSE) Copyright (c) 2020-2021 [Upendra Bajpai](https://www.linkedin.com/in/upendrabajpai/).
