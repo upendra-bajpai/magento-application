@@ -77,7 +77,7 @@ troublesohard@gmail.com-->
 
 They are offering an open-source plan for this project.-->
 
-Design work credits @abuanwar072
+Design work credits @abuanwar
 
 ## 🛡 License
 
