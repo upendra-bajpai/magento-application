@@ -28,17 +28,20 @@ class Body extends StatelessWidget {
             future: ProductsBloc().renderProductList(),
             builder:
                 (context, AsyncSnapshot<List<CategoriesListModal>> snapShot) {
-              if (snapShot.hasData) {
+              if (snapShot.hasData && snapShot.data != null) {
                 return Column(
                     children:
-                        List<Widget>.generate((snapShot.data.length), (index) {
-                  logd("listcdk -> ${snapShot.data[index].productCount} ${snapShot.data[index].id}  ${snapShot.data[index].name}");
-                 /**
+                        List<Widget>.generate((snapShot.data!.length), (index) {
+                  logd(
+                      "listcdk -> ${snapShot.data![index].productCount} ${snapShot.data![index].id}  ${snapShot.data![index].name}");
+                  /**
                   * snapShot.data[index].childrenData.length <= 0 gives last node of category three.
                   * snapShot.data[index].productCount>0  tells if category has data to show.
                   */
-                  if (snapShot.data[index].childrenData.length <= 0&&snapShot.data[index].productCount>0)
-                    return PopularProducts(snapShot.data[index].name, snapShot.data[index].id);
+                  if (snapShot.data![index].childrenData.length <= 0 &&
+                      snapShot.data![index].productCount > 0)
+                    return PopularProducts(
+                        snapShot.data![index].name, snapShot.data![index].id);
                   else
                     return Container(height: getProportionateScreenHeight(0));
                 }));

@@ -10,39 +10,49 @@ class GetCartModal {
   int price;
   String productType;
   String quoteId;
-  ProductOption productOption;
+  ProductOption? productOption;
 
-  GetCartModal(
-      {this.itemId,
-      this.sku,
-      this.qty,
-      this.name,
-      this.price,
-      this.productType,
-      this.quoteId,
-      this.productOption});
+  GetCartModal({
+    required this.itemId,
+    required this.sku,
+    required this.qty,
+    required this.name,
+    required this.price,
+    required this.productType,
+    required this.quoteId,
+    required this.productOption,
+  });
 
-  GetCartModal.fromJson(Map<String, dynamic> jsonData) {
-    _makeJson(jsonData);
+  static fromJson(Map<String, dynamic> json) {
+    //   itemId = json['item_id'];
+    // sku = json['sku'];
+    // qty = json['qty'];
+    // name = json['name'];
+    // price = json['price'];
+    // productType = json['product_type'];
+    // quoteId = json['quote_id'];
+    // productOption = json['product_option'] != null
+    //     ? new ProductOption.fromJson(json['product_option'])
+    //     : null;
+
+    return GetCartModal(
+        itemId: json['item_id'],
+        sku: json['sku'],
+        qty: json['qty'],
+        name: json['name'],
+        price: json['price'],
+        productType: json['product_type'],
+        quoteId: json['quote_id'],
+        productOption: json['product_option'] != null
+            ? ProductOption.fromJson(json['product_option'])
+            : null);
   }
 
-  GetCartModal.formJsonStr(String jsonData){
+  static formJsonStr(String jsonData) {
     Iterable iterable = json.decode(jsonData) as List;
     logd("irt ${iterable.iterator.current}");
-     List<GetCartModal>.from(iterable.map((model) => GetCartModal.fromJson(model)));
-  }
-
-  _makeJson(Map<String, dynamic> json) {
-    itemId = json['item_id'];
-    sku = json['sku'];
-    qty = json['qty'];
-    name = json['name'];
-    price = json['price'];
-    productType = json['product_type'];
-    quoteId = json['quote_id'];
-    productOption = json['product_option'] != null
-        ? new ProductOption.fromJson(json['product_option'])
-        : null;
+    List<GetCartModal>.from(
+        iterable.map((model) => GetCartModal.fromJson(model)));
   }
 
   Map<String, dynamic> toJson() {
@@ -55,27 +65,28 @@ class GetCartModal {
     data['product_type'] = this.productType;
     data['quote_id'] = this.quoteId;
     if (this.productOption != null) {
-      data['product_option'] = this.productOption.toJson();
+      data['product_option'] = this.productOption?.toJson();
     }
     return data;
   }
 }
 
 class ProductOption {
-  ExtensionAttributes extensionAttributes;
+  final ExtensionAttributes? extensionAttributes;
 
-  ProductOption({this.extensionAttributes});
+  const ProductOption({required this.extensionAttributes});
 
-  ProductOption.fromJson(Map<String, dynamic> json) {
-    extensionAttributes = json['extension_attributes'] != null
-        ? new ExtensionAttributes.fromJson(json['extension_attributes'])
-        : null;
+  static ProductOption fromJson(Map<String, dynamic> json) {
+    return ProductOption(
+        extensionAttributes: json['extension_attributes'] != null
+            ? ExtensionAttributes.fromJson(json['extension_attributes'])
+            : null);
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     if (this.extensionAttributes != null) {
-      data['extension_attributes'] = this.extensionAttributes.toJson();
+      data['extension_attributes'] = this.extensionAttributes?.toJson();
     }
     return data;
   }
@@ -84,15 +95,15 @@ class ProductOption {
 class ExtensionAttributes {
   List<ConfigurableItemOptions> configurableItemOptions;
 
-  ExtensionAttributes({this.configurableItemOptions});
+  ExtensionAttributes({required this.configurableItemOptions});
 
-  ExtensionAttributes.fromJson(Map<String, dynamic> json) {
-    if (json['configurable_item_options'] != null) {
-      configurableItemOptions = new List<ConfigurableItemOptions>();
-      json['configurable_item_options'].forEach((v) {
-        configurableItemOptions.add(new ConfigurableItemOptions.fromJson(v));
-      });
-    }
+  factory ExtensionAttributes.fromJson(Map<String, dynamic> json) {
+    return ExtensionAttributes(
+        configurableItemOptions: json['configurable_item_options'] != null
+            ? List<ConfigurableItemOptions>.from(
+                json['configurable_item_options']
+                    .map((model) => ConfigurableItemOptions.fromJson(model)))
+            : []);
   }
 
   Map<String, dynamic> toJson() {
@@ -109,11 +120,11 @@ class ConfigurableItemOptions {
   String optionId;
   int optionValue;
 
-  ConfigurableItemOptions({this.optionId, this.optionValue});
+  ConfigurableItemOptions({required this.optionId, required this.optionValue});
 
-  ConfigurableItemOptions.fromJson(Map<String, dynamic> json) {
-    optionId = json['option_id'];
-    optionValue = json['option_value'];
+  static fromJson(Map<String, dynamic> json) {
+    return ConfigurableItemOptions(
+        optionId: json['option_id'], optionValue: json['option_value']);
   }
 
   Map<String, dynamic> toJson() {
@@ -122,5 +133,4 @@ class ConfigurableItemOptions {
     data['option_value'] = this.optionValue;
     return data;
   }
-  
 }

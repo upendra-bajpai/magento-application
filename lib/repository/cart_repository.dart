@@ -10,29 +10,37 @@ class CartRepository {
   ApiBaseHelper _apiClinet = ApiBaseHelper();
 
   /// create cart here
-  Future<String> doPostCart() async{
-    String url=club(CART_INIT);
-    final response =await _apiClinet.put(url, "");
+  Future<String> doPostCart() async {
+    String url = club(CART_INIT);
+    final response = await _apiClinet.put(url, "");
     return response;
   }
-  Future<CartResponseModal> doPostCartData(
-     String root) async {
-    String url =club(CART_LISTING);
-    final response = await _apiClinet.put(url,root);
+
+  Future<CartResponseModal> doPostCartData(String root) async {
+    String url = club(CART_LISTING);
+    final response = await _apiClinet.put(url, root);
     //print(response);
     return CartResponseModal.fromJson(response);
   }
 
-   /// show customer cart
-   Future<List<GetCartModal>> getCart() async{
-     String url =club(CART_LISTING);
-     Future<String> data= Sf.getStringValuesSF(USER_TOKEN);
-     data.then((value) => logd("token -> $value"));
-     ///await to halt execution till token found.
-     var header={'Authorization':"Bearer ${await Sf.getStringValuesSF(USER_TOKEN)}",'accept': 'application/json'};
-    final response = await _apiClinet.get(Uri.parse(url),headers: header);
+  /// show customer cart
+  Future<List<GetCartModal>> getCart() async {
+    String url = club(CART_LISTING);
+    Future<String?> data = Sf.getStringValuesSF(USER_TOKEN);
+    data.then((value) => logd("token -> $value"));
+
+    ///await to halt execution till token found.
+    var header = {
+      'Authorization': "Bearer ${await Sf.getStringValuesSF(USER_TOKEN)}",
+      'accept': 'application/json'
+    };
+    final response = await _apiClinet.get(Uri.parse(url), headers: header);
     //logd("cart response => $response");
-    return (json.decode(jsonEncode(response)) as List).map((i) =>
-              GetCartModal.fromJson(i)).toList();
-   }
+
+    return response.map((e) => GetCartModal.fromJson(e)).toList();
+
+    // return (json.decode(jsonEncode(response)) as List)
+    //     .map((i) => GetCartModal.fromJson(i))
+    //     .toList();
+  }
 }

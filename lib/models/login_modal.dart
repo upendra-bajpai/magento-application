@@ -1,23 +1,26 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 class LoginModal {
-  String _message;
-  List<Errors> _errors;
-  int _code;
-  List<Parameters> _parameters;
-  String _trace;
+  late String _message;
+  late List<Errors> _errors;
+  late int _code;
+  late List<Parameters> _parameters;
+  late String _trace;
 
-  LoginModal.my(this._code,this._message);
+  factory LoginModal.my(int statusCode, String msg) {
+    return LoginModal(message: msg, code: statusCode);
+  }
 
   LoginModal(
-      {String message,
-      List<Errors> errors,
-      int code,
-      List<Parameters> parameters,
-      String trace}) {
+      {required String message,
+      List<Errors>? errors,
+      required int code,
+      List<Parameters>? parameters,
+      String? trace}) {
     this._message = message;
-    this._errors = errors;
+    this._errors = errors ?? [];
     this._code = code;
-    this._parameters = parameters;
-    this._trace = trace;
+    this._parameters = parameters ?? [];
+    this._trace = trace ?? '';
   }
 
   String get message => _message;
@@ -34,14 +37,14 @@ class LoginModal {
   LoginModal.fromJson(Map<String, dynamic> json) {
     _message = json['message'];
     if (json['errors'] != null) {
-      _errors = new List<Errors>();
+      _errors = [];
       json['errors'].forEach((v) {
         _errors.add(new Errors.fromJson(v));
       });
     }
     _code = json['code'];
     if (json['parameters'] != null) {
-      _parameters = new List<Parameters>();
+      _parameters = [];
       json['parameters'].forEach((v) {
         _parameters.add(new Parameters.fromJson(v));
       });
@@ -62,13 +65,28 @@ class LoginModal {
     data['trace'] = this._trace;
     return data;
   }
+
+  LoginModal copyWith({
+    String? message,
+    List<Errors>? errors,
+    int? code,
+    List<Parameters>? parameters,
+    String? trace,
+  }) {
+    return LoginModal(
+        message: message ?? this._message,
+        errors: errors ?? this.errors,
+        code: code ?? this.code,
+        parameters: parameters ?? this.parameters,
+        trace: trace ?? this._trace);
+  }
 }
 
 class Errors {
-  String _message;
-  List<Parameters> _parameters;
+  late String _message;
+  late List<Parameters> _parameters;
 
-  Errors({String message, List<Parameters> parameters}) {
+  Errors({required String message, required List<Parameters> parameters}) {
     this._message = message;
     this._parameters = parameters;
   }
@@ -81,7 +99,7 @@ class Errors {
   Errors.fromJson(Map<String, dynamic> json) {
     _message = json['message'];
     if (json['parameters'] != null) {
-      _parameters = new List<Parameters>();
+      _parameters = [];
       json['parameters'].forEach((v) {
         _parameters.add(new Parameters.fromJson(v));
       });
@@ -99,11 +117,14 @@ class Errors {
 }
 
 class Parameters {
-  String _resources;
-  String _fieldName;
-  String _fieldValue;
+  late String _resources;
+  late String _fieldName;
+  late String _fieldValue;
 
-  Parameters({String resources, String fieldName, String fieldValue}) {
+  Parameters(
+      {required String resources,
+      required String fieldName,
+      required String fieldValue}) {
     this._resources = resources;
     this._fieldName = fieldName;
     this._fieldValue = fieldValue;

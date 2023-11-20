@@ -8,13 +8,13 @@ import 'app_exceptions.dart';
 class ApiBaseHelper {
   final String _baseUrl = "http://api.themoviedb.org/3/";
 
-  Future<dynamic> get(Uri url,{Map<String,String> headers}) async {
+  Future<dynamic> get(Uri url, {Map<String, String>? headers}) async {
     print('Api Get, urls $url');
     var responseJson;
     try {
-      if(headers==null)
-        headers={'Authorization':TOKEN,'accept': 'application/json'};
-      final response = await http.get( url, headers: headers);
+      if (headers == null)
+        headers = {'Authorization': TOKEN, 'accept': 'application/json'};
+      final response = await http.get(url, headers: headers);
       responseJson = _returnResponse(response);
     } on SocketException {
       print('No net');
@@ -28,8 +28,8 @@ class ApiBaseHelper {
     print('Api Post, url $url');
     var responseJson;
     try {
-      final response = await http.post( Uri.parse(url),
-      headers: {'Content-Type': 'application/json'}, body: body);
+      final response = await http.post(Uri.parse(url),
+          headers: {'Content-Type': 'application/json'}, body: body);
       responseJson = _returnResponse(response);
     } on SocketException {
       print('No net');
@@ -43,7 +43,7 @@ class ApiBaseHelper {
     print('Api Put, url $url');
     var responseJson;
     try {
-      final response = await http.put( Uri.parse(url), body: body);
+      final response = await http.put(Uri.parse(url), body: body);
       responseJson = _returnResponse(response);
     } on SocketException {
       print('No net');
@@ -70,7 +70,8 @@ class ApiBaseHelper {
 }
 
 dynamic _returnResponse(http.Response response) {
-  print("Your response is ${response.request.url} -> ${response.body.toString()}");
+  print(
+      "Your response is ${response.request?.url} -> ${response.body.toString()}");
   switch (response.statusCode) {
     case 200:
       var responseJson = json.decode(response.body.toString());

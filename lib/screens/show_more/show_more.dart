@@ -10,7 +10,7 @@ class ShowMore extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final CategoryDetailsArgs agrs =
-        ModalRoute.of(context).settings.arguments;
+        ModalRoute.of(context)!.settings.arguments as CategoryDetailsArgs;
     return Scaffold(
       backgroundColor: Color(0xFFF5F6F9),
       appBar: CustomAppBar("Items Listing"),
@@ -22,5 +22,5 @@ class ShowMore extends StatelessWidget {
 class CategoryDetailsArgs {
   final DataAttr category;
 
-  CategoryDetailsArgs({@required this.category});
+  CategoryDetailsArgs({required this.category});
 }

@@ -1,33 +1,32 @@
-
 class SignUpResponse {
-  int _id;
-  int _groupId;
-  String _createdAt;
-  String _updatedAt;
-  String _createdIn;
-  String _email;
-  String _firstname;
-  String _lastname;
-  int _storeId;
-  int _websiteId;
-  List<Null> _addresses;
-  int _disableAutoGroupChange;
-  ExtensionAttributes _extensionAttributes;
+  late int _id;
+  late int _groupId;
+  late String _createdAt;
+  late String _updatedAt;
+  late String _createdIn;
+  late String _email;
+  late String _firstname;
+  late String _lastname;
+  late int _storeId;
+  late int _websiteId;
+  late List<Null> _addresses;
+  late int _disableAutoGroupChange;
+  late ExtensionAttributes _extensionAttributes;
 
   SignUpResponse(
-      {int id,
-      int groupId,
-      String createdAt,
-      String updatedAt,
-      String createdIn,
-      String email,
-      String firstname,
-      String lastname,
-      int storeId,
-      int websiteId,
-      List<Null> addresses,
-      int disableAutoGroupChange,
-      ExtensionAttributes extensionAttributes}) {
+      {required int id,
+      required int groupId,
+      required String createdAt,
+      required String updatedAt,
+      required String createdIn,
+      required String email,
+      required String firstname,
+      required String lastname,
+      required int storeId,
+      required int websiteId,
+      required List<Null> addresses,
+      required int disableAutoGroupChange,
+      required ExtensionAttributes extensionAttributes}) {
     this._id = id;
     this._groupId = groupId;
     this._createdAt = createdAt;
@@ -83,16 +82,16 @@ class SignUpResponse {
     _lastname = json['lastname'];
     _storeId = json['store_id'];
     _websiteId = json['website_id'];
-   /*  if (json['addresses'] != null) {
+    /*  if (json['addresses'] != null) {
       _addresses = new List<Null>();
       json['addresses'].forEach((v) {
         _addresses.add(new Null.fromJson(v));
       });
     } */
     _disableAutoGroupChange = json['disable_auto_group_change'];
-    _extensionAttributes = json['extension_attributes'] != null
+    _extensionAttributes = (json['extension_attributes'] != null
         ? new ExtensionAttributes.fromJson(json['extension_attributes'])
-        : null;
+        : null)!;
   }
 
   Map<String, dynamic> toJson() {
@@ -119,9 +118,9 @@ class SignUpResponse {
 }
 
 class ExtensionAttributes {
-  bool _isSubscribed;
+  late bool _isSubscribed;
 
-  ExtensionAttributes({bool isSubscribed}) {
+  ExtensionAttributes({required bool isSubscribed}) {
     this._isSubscribed = isSubscribed;
   }
 

@@ -1,8 +1,8 @@
 class SignUpData {
-  Customer _customer;
-  String _password;
+  late Customer _customer;
+  late String _password;
 
-  SignUpData({Customer customer, String password}) {
+  SignUpData({required Customer customer, required String password}) {
     this._customer = customer;
     this._password = password;
   }
@@ -13,9 +13,9 @@ class SignUpData {
   set password(String password) => _password = password;
 
   SignUpData.fromJson(Map<String, dynamic> json) {
-    _customer = json['customer'] != null
+    _customer = (json['customer'] != null
         ? new Customer.fromJson(json['customer'])
-        : null;
+        : null)!;
     _password = json['password'];
   }
 
@@ -30,20 +30,20 @@ class SignUpData {
 }
 
 class Customer {
-  String _email;
-  String _firstname;
-  String _lastname;
-  List<Addresses> _addresses;
-  ExtensionAttributes _extensionAttributes;
-  List<CustomAttributes> _customAttributes;
+  late String _email;
+  late String _firstname;
+  late String _lastname;
+  late List<Addresses> _addresses;
+  late ExtensionAttributes _extensionAttributes;
+  late List<CustomAttributes> _customAttributes;
 
   Customer(
-      {String email,
-      String firstname,
-      String lastname,
-      List<Addresses> addresses,
-      ExtensionAttributes extensionAttributes,
-      List<CustomAttributes> customAttributes}) {
+      {required String email,
+      required String firstname,
+      required String lastname,
+      required List<Addresses> addresses,
+      required ExtensionAttributes extensionAttributes,
+      required List<CustomAttributes> customAttributes}) {
     this._email = email;
     this._firstname = firstname;
     this._lastname = lastname;
@@ -72,16 +72,16 @@ class Customer {
     _firstname = json['firstname'];
     _lastname = json['lastname'];
     if (json['addresses'] != null) {
-      _addresses = new List<Addresses>();
+      _addresses = [];
       json['addresses'].forEach((v) {
         _addresses.add(new Addresses.fromJson(v));
       });
     }
-    _extensionAttributes = json['extension_attributes'] != null
+    _extensionAttributes = (json['extension_attributes'] != null
         ? new ExtensionAttributes.fromJson(json['extension_attributes'])
-        : null;
+        : null)!;
     if (json['custom_attributes'] != null) {
-      _customAttributes = new List<CustomAttributes>();
+      _customAttributes = [];
       json['custom_attributes'].forEach((v) {
         _customAttributes.add(new CustomAttributes.fromJson(v));
       });
@@ -108,28 +108,28 @@ class Customer {
 }
 
 class Addresses {
-  bool _defaultShipping;
-  bool _defaultBilling;
-  String _firstname;
-  String _lastname;
-  Region _region;
-  String _postcode;
-  List<String> _street;
-  String _city;
-  String _telephone;
-  String _countryId;
+  late bool _defaultShipping;
+  late bool _defaultBilling;
+  late String _firstname;
+  late String _lastname;
+  late Region _region;
+  late String _postcode;
+  late List<String> _street;
+  late String _city;
+  late String _telephone;
+  late String _countryId;
 
   Addresses(
-      {bool defaultShipping,
-      bool defaultBilling,
-      String firstname,
-      String lastname,
-      Region region,
-      String postcode,
-      List<String> street,
-      String city,
-      String telephone,
-      String countryId}) {
+      {required bool defaultShipping,
+      required bool defaultBilling,
+      required String firstname,
+      required String lastname,
+      required Region region,
+      required String postcode,
+      required List<String> street,
+      required String city,
+      required String telephone,
+      required String countryId}) {
     this._defaultShipping = defaultShipping;
     this._defaultBilling = defaultBilling;
     this._firstname = firstname;
@@ -170,7 +170,7 @@ class Addresses {
     _firstname = json['firstname'];
     _lastname = json['lastname'];
     _region =
-        json['region'] != null ? new Region.fromJson(json['region']) : null;
+        (json['region'] != null ? new Region.fromJson(json['region']) : null)!;
     _postcode = json['postcode'];
     _street = json['street'].cast<String>();
     _city = json['city'];
@@ -197,11 +197,14 @@ class Addresses {
 }
 
 class Region {
-  String _regionCode;
-  String _region;
-  int _regionId;
+  late String _regionCode;
+  late String _region;
+  late int _regionId;
 
-  Region({String regionCode, String region, int regionId}) {
+  Region(
+      {required String regionCode,
+      required String region,
+      required int regionId}) {
     this._regionCode = regionCode;
     this._region = region;
     this._regionId = regionId;
@@ -230,9 +233,9 @@ class Region {
 }
 
 class ExtensionAttributes {
-  bool _isSubscribed;
+  late bool _isSubscribed;
 
-  ExtensionAttributes({bool isSubscribed}) {
+  ExtensionAttributes({required bool isSubscribed}) {
     this._isSubscribed = isSubscribed;
   }
 
@@ -251,10 +254,10 @@ class ExtensionAttributes {
 }
 
 class CustomAttributes {
-  String _attributeCode;
-  String _value;
+  late String _attributeCode;
+  late String _value;
 
-  CustomAttributes({String attributeCode, String value}) {
+  CustomAttributes({required String attributeCode, required String value}) {
     this._attributeCode = attributeCode;
     this._value = value;
   }

@@ -6,7 +6,11 @@ import '../../../size_config.dart';
 class CustomAppBar extends PreferredSize {
   final double rating;
 
-  CustomAppBar({@required this.rating});
+  CustomAppBar({
+    required this.rating,
+  }) : super(
+            child: Container(),
+            preferredSize: Size.fromHeight(AppBar().preferredSize.height));
 
   @override
   // AppBar().preferredSize.height provide us the height that appy on our app bar
@@ -23,7 +27,7 @@ class CustomAppBar extends PreferredSize {
             SizedBox(
               height: getProportionateScreenWidth(40),
               width: getProportionateScreenWidth(40),
-              child: FlatButton(
+              child: MaterialButton(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(60),
                 ),

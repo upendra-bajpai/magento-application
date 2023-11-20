@@ -16,14 +16,15 @@ class Categories extends StatelessWidget {
     logd(getProportionateScreenWidth(55));
     return Container(
       width: double.infinity,
-      margin: EdgeInsets.fromLTRB(getProportionateScreenWidth(20),0,getProportionateScreenWidth(20),0),
+      margin: EdgeInsets.fromLTRB(getProportionateScreenWidth(20), 0,
+          getProportionateScreenWidth(20), 0),
       height: getProportionateScreenHeight(120),
       //width: getProportionateScreenWidth(75),
       child: FutureBuilder(
           future: CategoriesBloc().doGetCategoriesList(1, 4),
           builder: (context, AsyncSnapshot<CategoriesListModal> snapShot) {
-            if (snapShot.hasData) {
-              logd("worth it ${snapShot.data.childrenData[0].childrenData}");
+            if (snapShot.hasData && snapShot.data != null) {
+              logd("worth it ${snapShot.data?.childrenData[0].childrenData}");
               return Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -34,16 +35,20 @@ class Categories extends StatelessWidget {
                       physics: BouncingScrollPhysics(),
                       scrollDirection: Axis.horizontal,
                       shrinkWrap: true,
-                      separatorBuilder: (BuildContext context, int index) => Divider(thickness: 15,indent: 12,),
+                      separatorBuilder: (BuildContext context, int index) =>
+                          Divider(
+                        thickness: 15,
+                        indent: 12,
+                      ),
                       itemCount:
-                          snapShot.data.childrenData[0].childrenData.length,
+                          snapShot.data!.childrenData[0].childrenData.length,
                       itemBuilder: (context, index) {
                         return CategoryCard(
                           icon: snapShot
-                              .data.childrenData[0].childrenData[index].id
+                              .data!.childrenData[0].childrenData[index].id
                               .toString(),
                           text: snapShot
-                              .data.childrenData[0].childrenData[index].name,
+                              .data!.childrenData[0].childrenData[index].name,
                           press: () {
                             Navigator.pushNamed(context, ShowMore.routeName);
                           },
@@ -69,10 +74,10 @@ class Categories extends StatelessWidget {
 
 class CategoryCard extends StatelessWidget {
   const CategoryCard({
-    Key key,
-    @required this.icon,
-    @required this.text,
-    @required this.press,
+    Key? key,
+    required this.icon,
+    required this.text,
+    required this.press,
   }) : super(key: key);
 
   final String icon, text;
@@ -103,7 +108,7 @@ class CategoryCard extends StatelessWidget {
                   builder: (context, AsyncSnapshot<String> snapshot) {
                     //logd(snapshot.data);
                     if (snapshot.hasData)
-                      return iconBuilder(snapshot.data);
+                      return iconBuilder(snapshot.data!);
                     else
                       return Text("Category Icon Should Be Here");
                   },

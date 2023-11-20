@@ -19,11 +19,11 @@ class SignForm extends StatefulWidget {
 
 class _SignFormState extends State<SignForm> {
   final _formKey = GlobalKey<FormState>();
-  String email;
-  String password;
-  bool remember = false;
+  late String email;
+  late String password;
+  late bool remember = false;
   final List<String> errors = [];
-  LoginBloc _loginBloc;
+  late LoginBloc _loginBloc;
 
   @override
   void initState() {
@@ -32,14 +32,14 @@ class _SignFormState extends State<SignForm> {
     _loginBloc = LoginBloc();
   }
 
-  void addError({String error}) {
+  void addError({required String error}) {
     if (!errors.contains(error))
       setState(() {
         errors.add(error);
       });
   }
 
-  void removeError({String error}) {
+  void removeError({required String error}) {
     if (errors.contains(error))
       setState(() {
         errors.remove(error);
@@ -63,7 +63,7 @@ class _SignFormState extends State<SignForm> {
                 activeColor: kPrimaryColor,
                 onChanged: (value) {
                   setState(() {
-                    remember = value;
+                    remember = value ?? false;
                   });
                 },
               ),
@@ -85,8 +85,8 @@ class _SignFormState extends State<SignForm> {
             text: "Continue",
             press: () {
               CircularProgressIndicator();
-              if (_formKey.currentState.validate()) {
-                _formKey.currentState.save();
+              if (_formKey.currentState!.validate()) {
+                _formKey.currentState!.save();
                 // if all are valid then go to success screen
                 LoginBloc()
                     .doPostLogin(email, password)
@@ -104,7 +104,7 @@ class _SignFormState extends State<SignForm> {
   TextFormField buildPasswordFormField() {
     return TextFormField(
       obscureText: true,
-      onSaved: (newValue) => password = newValue,
+      onSaved: (newValue) => password = newValue ?? '',
       onChanged: (value) {
         if (value.isNotEmpty) {
           removeError(error: kPassNullError);
@@ -114,7 +114,7 @@ class _SignFormState extends State<SignForm> {
         return null;
       },
       validator: (value) {
-        if (value.isEmpty) {
+        if (value == null || value.isEmpty) {
           addError(error: kPassNullError);
           return "";
         } else if (value.length < 8) {
@@ -137,7 +137,7 @@ class _SignFormState extends State<SignForm> {
   TextFormField buildEmailFormField() {
     return TextFormField(
       keyboardType: TextInputType.emailAddress,
-      onSaved: (newValue) => email = newValue,
+      onSaved: (newValue) => email = newValue ?? '',
       onChanged: (value) {
         if (value.isNotEmpty) {
           removeError(error: kEmailNullError);
@@ -147,7 +147,7 @@ class _SignFormState extends State<SignForm> {
         return null;
       },
       validator: (value) {
-        if (value.isEmpty) {
+        if (value == null || value.isEmpty) {
           addError(error: kEmailNullError);
           return "";
         } else if (!emailValidatorRegExp.hasMatch(value)) {
@@ -183,7 +183,7 @@ class _SignFormState extends State<SignForm> {
 
 showAlertDialog(BuildContext context, String title, String message) {
   // set up the button
-  Widget okButton = FlatButton(
+  Widget okButton = MaterialButton(
     child: Text("OK"),
     onPressed: () {},
   );

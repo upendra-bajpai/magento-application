@@ -1,9 +1,9 @@
 class ApiResponse<T> {
   Status status;
 
-  T data;
+  T? data;
 
-  String message;
+  String? message;
 
   ApiResponse.loading(this.message) : status = Status.LOADING;
 

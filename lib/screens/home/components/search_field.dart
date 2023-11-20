@@ -5,7 +5,7 @@ import '../../../size_config.dart';
 
 class SearchField extends StatelessWidget {
   const SearchField({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -18,7 +18,7 @@ class SearchField extends StatelessWidget {
       ),
       child: Material(
         elevation: 8.0,
-         borderRadius: BorderRadius.circular(50),
+        borderRadius: BorderRadius.circular(50),
         child: TextField(
           readOnly: true,
           onTap: () => showSearch(context: context, delegate: SearchingClass()),
@@ -44,7 +44,7 @@ class SearchingClass extends SearchDelegate {
   var whiteText = Color(0xffF5F5F5);
   var suggestion = ["lol", "hurray", "upendra"];
   List<String> allNames = ["hurray", "upendra", "john", "user"];
-  List<String> searchResult = List();
+  List<String> searchResult = [];
 
   @override
   List<Widget> buildActions(BuildContext context) {

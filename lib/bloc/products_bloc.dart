@@ -12,7 +12,7 @@ class ProductsBloc {
 //https://stackoverflow.com/questions/18423691/dart-how-to-create-a-future-to-return-in-your-own-functions
   Future<List<CategoriesListModal>> renderProductList() {
     CategoriesBloc _catRepo = CategoriesBloc();
-    List<CategoriesListModal> _listCategory = List<CategoriesListModal>();
+    List<CategoriesListModal> _listCategory = [];
     return _catRepo.doGetCategoriesList(1, 4).then((value) {
       var _chdata = value.childrenData[0].childrenData.length;
       logd("category loop $_chdata");
@@ -75,30 +75,27 @@ class ProductsBloc {
 
       return _productsList;
     });
-
   }
 
-    //return productsList;
+  //return productsList;
 
-    Future<Product> getProductDetails(String sku) {
-      ProductsRepository _productsRepository = ProductsRepository();
-      return _productsRepository.doGetProduct(sku).then((products) {
-        List<String> _productsMedia = <String>[];
-        var description = "";
-        for (var customAttr in products.customAttributes) {
-          print("products attr ${customAttr.attributeCode}");
-          if (customAttr.attributeCode == "small_image" ||
-              customAttr.attributeCode == "thumbnail" ||
-              customAttr.attributeCode == "image")
-            _productsMedia.add(club(MEDIA_BASE + customAttr.value.toString()));
-          logd(
-              "media url -> ${club(MEDIA_BASE + customAttr.value.toString())}");
-          if (customAttr.attributeCode == "description")
-            description = customAttr.value;
-        }
-         return Product(products.id, products.sku, _productsMedia,
-            products.name, products.price.toDouble(), description);
-      });
-     
-    }
+  Future<Product> getProductDetails(String sku) {
+    ProductsRepository _productsRepository = ProductsRepository();
+    return _productsRepository.doGetProduct(sku).then((products) {
+      List<String> _productsMedia = <String>[];
+      var description = "";
+      for (var customAttr in products.customAttributes) {
+        print("products attr ${customAttr.attributeCode}");
+        if (customAttr.attributeCode == "small_image" ||
+            customAttr.attributeCode == "thumbnail" ||
+            customAttr.attributeCode == "image")
+          _productsMedia.add(club(MEDIA_BASE + customAttr.value.toString()));
+        logd("media url -> ${club(MEDIA_BASE + customAttr.value.toString())}");
+        if (customAttr.attributeCode == "description")
+          description = customAttr.value;
+      }
+      return Product(products.id, products.sku, _productsMedia, products.name,
+          products.price.toDouble(), description);
+    });
+  }
 }
