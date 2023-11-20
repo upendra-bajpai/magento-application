@@ -9,8 +9,8 @@ import '../../../size_config.dart';
 
 class ProductInfo extends StatelessWidget {
   const ProductInfo({
-    Key key,
-    @required this.product,
+    Key? key,
+    required this.product,
   }) : super(key: key);
 
   final Product product;
@@ -33,7 +33,7 @@ class ProductInfo extends StatelessWidget {
                 aspectRatio: 0.88,
                 child: Material(
                   elevation: 8,
-                 borderRadius: BorderRadius.circular(15),
+                  borderRadius: BorderRadius.circular(15),
                   child: Container(
                     padding: EdgeInsets.symmetric(horizontal: 5),
                     decoration: BoxDecoration(
@@ -41,7 +41,7 @@ class ProductInfo extends StatelessWidget {
                         borderRadius: BorderRadius.circular(15)),
                     child: Hero(
                         tag: product.id.toString(),
-                        child: imgBuilder(product.images[0],radis: 15)),
+                        child: imgBuilder(product.images[0], radis: 15)),
                   ),
                 ),
               ),

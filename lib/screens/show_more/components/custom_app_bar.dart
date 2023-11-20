@@ -6,13 +6,16 @@ import '../../../size_config.dart';
 class CustomAppBar extends PreferredSize {
   @override
   // AppBar().preferredSize.height provide us the height that appy on our app bar
-  Size get preferredSize => Size.fromHeight(AppBar().preferredSize.height);
+  // Size get preferredSize => Size.fromHeight(AppBar().preferredSize.height);
   String title;
-  CustomAppBar(@required this.title);
+  CustomAppBar(this.title)
+      : super(
+            child: Container(),
+            preferredSize: Size.fromHeight(AppBar().preferredSize.height));
   @override
   Widget build(BuildContext context) {
     return AppBar(
-          title: Column(
+      title: Column(
         children: [
           /* FlatButton(
             shape: RoundedRectangleBorder(
@@ -27,7 +30,7 @@ class CustomAppBar extends PreferredSize {
             ),
           ), */
           SizedBox(width: 4),
-          Text(title, style:TextStyle(color: Colors.black))
+          Text(title, style: TextStyle(color: Colors.black))
         ],
       ),
     );

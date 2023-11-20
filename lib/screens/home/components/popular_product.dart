@@ -25,10 +25,10 @@ class PopularProducts extends StatelessWidget {
               title: data,
               press: () {
                 Navigator.pushNamed(
-            context,
-            ShowMore.routeName,
-            arguments: CategoryDetailsArgs(category: DataAttr(id:id)),
-          );
+                  context,
+                  ShowMore.routeName,
+                  arguments: CategoryDetailsArgs(category: DataAttr(id: id)),
+                );
               }),
         ),
         SizedBox(height: getProportionateScreenWidth(20)),
@@ -39,19 +39,19 @@ class PopularProducts extends StatelessWidget {
 
   Widget listProduct(int id) {
     return FutureBuilder(
-        future:
-            ProductsBloc().doGetProductsList("category_id", id.toString(), 10,1),
+        future: ProductsBloc()
+            .doGetProductsList("category_id", id.toString(), 10, 1),
         builder: (context, AsyncSnapshot<List<Product>> snapShot) {
           logd("products papular -> ${snapShot.data}");
           if (snapShot.hasData) {
-            print("listcds ${snapShot.data.length}");
+            print("listcds ${snapShot.data?.length}");
             return SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
-                    ...List.generate(snapShot.data.length, (index) {
-                      logd(snapShot.data[index].title);
-                      return ProductCard(product: snapShot.data[index]);
+                    ...List.generate(snapShot.data!.length, (index) {
+                      logd(snapShot.data?[index].title);
+                      return ProductCard(product: snapShot.data![index]);
                     }),
                     SizedBox(width: getProportionateScreenWidth(20)),
                   ],

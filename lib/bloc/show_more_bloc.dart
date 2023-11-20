@@ -5,21 +5,30 @@ import 'package:magento_mobile/network/end_point.dart';
 import 'package:magento_mobile/utils.dart';
 
 class ShowMoreNotifire extends ValueNotifier<List<Product>> {
-  ShowMoreNotifire() : super(null);
+  //  ShowMoreNotifire(super._value, this._value);
 
   int _pageNumber = 1;
   bool _hasMoreProducts = true;
   int _batchesOf = 10;
   //final String _apiUrl = club(PRODUCT_LIST);
-  List<Product> _listProducts;
+  late List<Product> _listProducts;
   bool _loading = false;
 
-  @override
-  List<Product> get value => _value;
-  List<Product> _value;
+  ShowMoreNotifire(super.value);
+
+  // @override
+  // List<Product> get value => _value;
+  // late List<Product> _value;
+
+  // // @override
+  // void setValue(List<Product> newValue) {
+  //   _value = newValue;
+  //   notifyListeners();
+  // }
+
   @override
   set value(List<Product> newValue) {
-    _value = newValue;
+    _listProducts = newValue;
     notifyListeners();
   }
 
@@ -44,7 +53,7 @@ class ShowMoreNotifire extends ValueNotifier<List<Product>> {
 
   Future<void> httpGetProducts(
       String root, String id, int depth, int page, bool direction) async {
-    _listProducts = List<Product>();
+    _listProducts = [];
     int pageNumber = page;
     var productBloc = ProductsBloc();
     if (_hasMoreProducts && pageNumber > 0) {
@@ -64,9 +73,8 @@ class ShowMoreNotifire extends ValueNotifier<List<Product>> {
       logd("whole list ${_listProducts.length} -> $pageNumber");
       _pageNumber = pageNumber;
       value = _listProducts;
-    }
-    else{
-      _pageNumber=1;
+    } else {
+      _pageNumber = 1;
     }
   }
 }

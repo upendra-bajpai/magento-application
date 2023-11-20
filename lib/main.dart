@@ -18,6 +18,9 @@ class MyApp extends StatelessWidget {
       theme: theme(),
       // home: SplashScreen(),
       // We use routeName so that we dont need to remember the name
+      // home: Scaffold(
+      //   body: Column(children: [Text("dsfsbdfubds huf dshu fhu")]),
+      // )
       initialRoute: SplashScreen.routeName,
       routes: routes,
     );

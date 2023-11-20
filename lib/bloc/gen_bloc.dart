@@ -4,16 +4,15 @@ import 'package:magento_mobile/models/login_modal.dart';
 import 'package:magento_mobile/network/api_response.dart';
 import 'package:magento_mobile/repository/login_repo.dart';
 
-
 class LoginBloc {
-  LoginRepo _movieRepository;
+  late LoginRepo _movieRepository;
 
-  StreamController _movieListController;
+  late StreamController<ApiResponse<LoginModal>?> _movieListController;
 
-  StreamSink<ApiResponse<LoginModal>> get movieListSink =>
+  StreamSink<ApiResponse<LoginModal?>?> get movieListSink =>
       _movieListController.sink;
 
-  Stream<ApiResponse<LoginModal>> get movieListStream =>
+  Stream<ApiResponse<LoginModal>?> get movieListStream =>
       _movieListController.stream;
 
   LoginBloc() {
@@ -25,7 +24,7 @@ class LoginBloc {
   fetchMovieList() async {
     movieListSink.add(ApiResponse.loading('Fetching Popular Movies'));
     try {
-      LoginModal movies = null;//await _movieRepository.putLogin("lll");
+      LoginModal? movies; //await _movieRepository.putLogin("lll");
       movieListSink.add(ApiResponse.completed(movies));
     } catch (e) {
       movieListSink.add(ApiResponse.error(e.toString()));

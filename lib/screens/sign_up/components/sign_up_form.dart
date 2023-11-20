@@ -7,7 +7,6 @@ import 'package:magento_mobile/screens/complete_profile/complete_profile_screen.
 import '../../../constants.dart';
 import '../../../size_config.dart';
 
-
 class SignUpForm extends StatefulWidget {
   @override
   _SignUpFormState createState() => _SignUpFormState();
@@ -15,20 +14,20 @@ class SignUpForm extends StatefulWidget {
 
 class _SignUpFormState extends State<SignUpForm> {
   final _formKey = GlobalKey<FormState>();
-  String email;
-  String password;
-  String conform_password;
-  bool remember = false;
+  late String email;
+  late String password;
+  late String conform_password;
+  late bool remember = false;
   final List<String> errors = [];
 
-  void addError({String error}) {
+  void addError({required String error}) {
     if (!errors.contains(error))
       setState(() {
         errors.add(error);
       });
   }
 
-  void removeError({String error}) {
+  void removeError({required String error}) {
     if (errors.contains(error))
       setState(() {
         errors.remove(error);
@@ -51,8 +50,8 @@ class _SignUpFormState extends State<SignUpForm> {
           DefaultButton(
             text: "Continue",
             press: () {
-              if (_formKey.currentState.validate()) {
-                _formKey.currentState.save();
+              if (_formKey.currentState!.validate()) {
+                _formKey.currentState?.save();
                 // if all are valid then go to success screen
                 Navigator.pushNamed(context, CompleteProfileScreen.routeName);
               }
@@ -66,7 +65,7 @@ class _SignUpFormState extends State<SignUpForm> {
   TextFormField buildConformPassFormField() {
     return TextFormField(
       obscureText: true,
-      onSaved: (newValue) => conform_password = newValue,
+      onSaved: (newValue) => conform_password = newValue ?? '',
       onChanged: (value) {
         if (value.isNotEmpty) {
           removeError(error: kPassNullError);
@@ -76,7 +75,7 @@ class _SignUpFormState extends State<SignUpForm> {
         conform_password = value;
       },
       validator: (value) {
-        if (value.isEmpty) {
+        if (value == null || value.isEmpty) {
           addError(error: kPassNullError);
           return "";
         } else if ((password != value)) {
@@ -99,7 +98,7 @@ class _SignUpFormState extends State<SignUpForm> {
   TextFormField buildPasswordFormField() {
     return TextFormField(
       obscureText: true,
-      onSaved: (newValue) => password = newValue,
+      onSaved: (newValue) => password = newValue ?? '',
       onChanged: (value) {
         if (value.isNotEmpty) {
           removeError(error: kPassNullError);
@@ -109,7 +108,7 @@ class _SignUpFormState extends State<SignUpForm> {
         password = value;
       },
       validator: (value) {
-        if (value.isEmpty) {
+        if (value == null || value.isEmpty) {
           addError(error: kPassNullError);
           return "";
         } else if (value.length < 8) {
@@ -132,7 +131,7 @@ class _SignUpFormState extends State<SignUpForm> {
   TextFormField buildEmailFormField() {
     return TextFormField(
       keyboardType: TextInputType.emailAddress,
-      onSaved: (newValue) => email = newValue,
+      onSaved: (newValue) => email = newValue ?? '',
       onChanged: (value) {
         if (value.isNotEmpty) {
           removeError(error: kEmailNullError);
@@ -142,7 +141,7 @@ class _SignUpFormState extends State<SignUpForm> {
         return null;
       },
       validator: (value) {
-        if (value.isEmpty) {
+        if (value == null || value.isEmpty) {
           addError(error: kEmailNullError);
           return "";
         } else if (!emailValidatorRegExp.hasMatch(value)) {

@@ -3,10 +3,10 @@ import 'package:magento_mobile/models/categories_models.dart';
 import 'package:magento_mobile/network/api_base_helper.dart';
 import 'package:magento_mobile/network/end_point.dart';
 
-
 class CategoryRepository {
   ApiBaseHelper _apiClinet = ApiBaseHelper();
-  Future<CategoriesListModal> doGetCategoriesList(Map<String,String> root) async {
+  Future<CategoriesListModal> doGetCategoriesList(
+      Map<String, String> root) async {
     Uri url = Uri.parse(club(CATEGORIES_LIST));
     final params = url.replace(queryParameters: root);
     final response = await _apiClinet.get(params);
@@ -14,7 +14,7 @@ class CategoryRepository {
     return CategoriesListModal.fromJson(jsonEncode(response));
   }
 
-  Future<String> doGetCategoryImg( dynamic catId) async {
+  Future<String> doGetCategoryImg(dynamic catId) async {
     Uri url = Uri.parse(club(CATEGORIES_LIST));
     //final ur = url.replace(queryParameters: root);
     String params = Uri.encodeFull(url.toString() + "/$catId");

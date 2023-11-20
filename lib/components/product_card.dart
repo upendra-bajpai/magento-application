@@ -9,10 +9,10 @@ import '../size_config.dart';
 
 class ProductCard extends StatelessWidget {
   const ProductCard({
-    Key key,
+    Key? key,
     this.width = 140,
     this.aspectRetio = 1.02,
-    @required this.product,
+    required this.product,
   }) : super(key: key);
 
   final double width, aspectRetio;
@@ -21,7 +21,9 @@ class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(left: getProportionateScreenWidth(20),top: getProportionateScreenWidth(2)),
+      padding: EdgeInsets.only(
+          left: getProportionateScreenWidth(20),
+          top: getProportionateScreenWidth(2)),
       child: SizedBox(
         width: getProportionateScreenWidth(width),
         child: GestureDetector(

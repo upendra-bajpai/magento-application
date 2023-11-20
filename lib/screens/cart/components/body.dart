@@ -26,15 +26,15 @@ class _BodyState extends State<Body> {
               logd("cart data -> ${snapShot.stackTrace}");
               if (snapShot.hasData) {
                 return ListView.builder(
-                  itemCount: snapShot.data.length,
+                  itemCount: snapShot.data?.length,
                   itemBuilder: (context, index) => Padding(
                     padding: EdgeInsets.symmetric(vertical: 10),
                     child: Dismissible(
-                      key: Key(snapShot.data[index].product.sku.toString()),
+                      key: Key(snapShot.data![index].product.sku.toString()),
                       direction: DismissDirection.endToStart,
                       onDismissed: (direction) {
                         setState(() {
-                          snapShot.data.removeAt(index);
+                          snapShot.data?.removeAt(index);
                         });
                       },
                       background: Container(
@@ -50,7 +50,7 @@ class _BodyState extends State<Body> {
                           ],
                         ),
                       ),
-                      child: CartCard(cart: snapShot.data[index]),
+                      child: CartCard(cart: snapShot.data![index]),
                     ),
                   ),
                 );

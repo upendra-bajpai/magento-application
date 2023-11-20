@@ -5,34 +5,34 @@ class Product {
   final String sku;
   final String title, description;
   final List<String> images;
-   List<Color> colors= [
-      Color(0xFFF6625E),
-      Color(0xFF836DB8),
-      Color(0xFFDECB9C),
-      Colors.white,
-    ];
-   num rating=0.0, price;
-   bool isFavourite=false, isPopular=false;
+  List<Color> colors = [
+    Color(0xFFF6625E),
+    Color(0xFF836DB8),
+    Color(0xFFDECB9C),
+    Colors.white,
+  ];
+  double rating = 0.0, price;
+  bool isFavourite = false, isPopular = false;
 
   Product(
-    @required this.id,
-    @required this.sku,
-    @required this.images,
-    @required this.title,
-    @required this.price,
-    @required this.description,
-  ); 
+    this.id,
+    this.sku,
+    this.images,
+    this.title,
+    this.price,
+    this.description,
+  );
   Product.sec({
-    @required this.id,
-    @required this.sku,
-    @required this.images,
-    @required this.colors,
+    required this.id,
+    required this.sku,
+    required this.images,
+    required this.colors,
     this.rating = 0.0,
     this.isFavourite = false,
     this.isPopular = false,
-    @required this.title,
-    @required this.price,
-    @required this.description,
+    required this.title,
+    required this.price,
+    required this.description,
   });
 }
 

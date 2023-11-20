@@ -7,7 +7,7 @@ import 'search_field.dart';
 
 class HomeHeader extends StatelessWidget {
   const HomeHeader({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -26,9 +26,9 @@ class HomeHeader extends StatelessWidget {
           IconBtnWithCounter(
             svgSrc: "assets/icons/Bell.svg",
             numOfitem: 3,
-            press: () { CategoriesBloc()
-        .doGetCategoriesList(1, 3)
-        .then((value) =>value);},
+            press: () {
+              CategoriesBloc().doGetCategoriesList(1, 3).then((value) => value);
+            },
           ),
         ],
       ),

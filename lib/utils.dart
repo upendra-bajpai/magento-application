@@ -49,31 +49,31 @@ class Sf {
   }
 
   //read async
-  static Future<String> getStringValuesSF(String key) async {
+  static Future<String?> getStringValuesSF(String key) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     //Return String
-    String stringValue = prefs.getString(key);
+    String? stringValue = prefs.getString(key);
     return stringValue;
   }
 
-  static getBoolValuesSF(String key) async {
+  static Future<bool?> getBoolValuesSF(String key) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     //Return bool
-    bool boolValue = prefs.getBool(key);
+    bool? boolValue = prefs.getBool(key);
     return boolValue;
   }
 
-  static getIntValuesSF(String key) async {
+  static Future<int?> getIntValuesSF(String key) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     //Return int
-    int intValue = prefs.getInt(key);
+    int? intValue = prefs.getInt(key);
     return intValue;
   }
 
-  static getDoubleValuesSF(String key) async {
+  static Future<double?> getDoubleValuesSF(String key) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     //Return double
-    double doubleValue = prefs.getDouble(key);
+    double? doubleValue = prefs.getDouble(key);
     return doubleValue;
   }
 }

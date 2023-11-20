@@ -6,10 +6,10 @@ import '../../../size_config.dart';
 
 class IconBtnWithCounter extends StatelessWidget {
   const IconBtnWithCounter({
-    Key key,
-    @required this.svgSrc,
+    Key? key,
+    required this.svgSrc,
     this.numOfitem = 0,
-    @required this.press,
+    required this.press,
   }) : super(key: key);
 
   final String svgSrc;
@@ -21,11 +21,11 @@ class IconBtnWithCounter extends StatelessWidget {
     return Material(
       elevation: 8,
       borderRadius: BorderRadius.circular(100),
-          child: InkWell(
+      child: InkWell(
         borderRadius: BorderRadius.circular(100),
         onTap: press,
         child: Stack(
-          overflow: Overflow.visible,
+          clipBehavior: Clip.none,
           children: [
             Container(
               padding: EdgeInsets.all(getProportionateScreenWidth(12)),
